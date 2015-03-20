@@ -1,1 +1,0 @@
-../../../GPX/GPXAuthor.h

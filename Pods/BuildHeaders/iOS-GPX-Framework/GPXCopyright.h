@@ -1,1 +1,0 @@
-../../../GPX/GPXCopyright.h

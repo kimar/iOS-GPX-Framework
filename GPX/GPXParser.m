@@ -17,22 +17,22 @@
 
 #pragma mark - Instance
 
-+ (GPXRoot *)parseGPXAtURL:(NSURL *)url
++ (GPXRoot *)parseGPXAtURL:(NSURL *)url error:(NSError **)error
 {
     NSData *data = [NSData dataWithContentsOfURL:url];
     
-    return  [self parseGPXWithData:data];
+    return  [self parseGPXWithData:data error:&error];
 }
 
-+ (GPXRoot *)parseGPXAtPath:(NSString *)path
++ (GPXRoot *)parseGPXAtPath:(NSString *)path error:(NSError **)error
 {
     NSURL *url = [NSURL fileURLWithPath:path];
-    return [GPXParser parseGPXAtURL:url];
+    return [GPXParser parseGPXAtURL:url error:&error];
 }
 
-+ (GPXRoot *)parseGPXWithString:(NSString*)string
++ (GPXRoot *)parseGPXWithString:(NSString*)string error:(NSError **)error
 {
-    TBXML *xml = [[TBXML alloc] initWithXMLString:string error:nil];
+    TBXML *xml = [[TBXML alloc] initWithXMLString:string error:&error];
     if (xml.rootXMLElement) {
         return [[GPXRoot alloc] initWithXMLElement:xml.rootXMLElement parent:nil];
     }
@@ -40,9 +40,9 @@
     return nil;
 }
 
-+ (GPXRoot *)parseGPXWithData:(NSData*)data
++ (GPXRoot *)parseGPXWithData:(NSData*)data error:(NSError **)error
 {
-    TBXML *xml = [[TBXML alloc] initWithXMLData:data error:nil];
+    TBXML *xml = [[TBXML alloc] initWithXMLData:data error:&error];
     if (xml.rootXMLElement) {
         return [[GPXRoot alloc] initWithXMLElement:xml.rootXMLElement parent:nil];
     }

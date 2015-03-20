@@ -23,27 +23,27 @@
  @param url An NSURL object specifying a URL. The URL must be fully qualified and refer to a scheme that is supported by the NSURL class.
  @return An initialized GPXRoot object or nil if an error occurs.
  */
-+ (GPXRoot *)parseGPXAtURL:(NSURL *)url;
++ (GPXRoot *)parseGPXAtURL:(NSURL *)url error:(NSError **)error;
 
 /** Parsing the GPX content referenced by the given File path.
  
  @param path The absolute path of the file from which to read GPX data.
  @return An initialized GPXRoot object or nil if an error occurs.
  */
-+ (GPXRoot *)parseGPXAtPath:(NSString *)path;
++ (GPXRoot *)parseGPXAtPath:(NSString *)path error:(NSError **)error;
 
 /** Parsing the GPX content referenced by the given GPX string.
  
  @param string The GPX string.
  @return An initialized GPXRoot object or nil if an error occurs.
  */
-+ (GPXRoot *)parseGPXWithString:(NSString*)string;
++ (GPXRoot *)parseGPXWithString:(NSString*)string error:(NSError **)error;
 
 /** Parsing the GPX content referenced by the given data.
  
  @param data The data from which to read GPX data.
  @return An initialized GPXROot object or nil if an error occurs.
  */
-+ (GPXRoot *)parseGPXWithData:(NSData*)data;
++ (GPXRoot *)parseGPXWithData:(NSData*)data error:(NSError **)error;
 
 @end
