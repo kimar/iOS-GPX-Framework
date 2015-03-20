@@ -21,18 +21,18 @@
 {
     NSData *data = [NSData dataWithContentsOfURL:url];
     
-    return  [self parseGPXWithData:data error:&error];
+    return  [self parseGPXWithData:data error:error];
 }
 
 + (GPXRoot *)parseGPXAtPath:(NSString *)path error:(NSError **)error
 {
     NSURL *url = [NSURL fileURLWithPath:path];
-    return [GPXParser parseGPXAtURL:url error:&error];
+    return [GPXParser parseGPXAtURL:url error:error];
 }
 
 + (GPXRoot *)parseGPXWithString:(NSString*)string error:(NSError **)error
 {
-    TBXML *xml = [[TBXML alloc] initWithXMLString:string error:&error];
+    TBXML *xml = [[TBXML alloc] initWithXMLString:string error:error];
     if (xml.rootXMLElement) {
         return [[GPXRoot alloc] initWithXMLElement:xml.rootXMLElement parent:nil];
     }
@@ -42,7 +42,7 @@
 
 + (GPXRoot *)parseGPXWithData:(NSData*)data error:(NSError **)error
 {
-    TBXML *xml = [[TBXML alloc] initWithXMLData:data error:&error];
+    TBXML *xml = [[TBXML alloc] initWithXMLData:data error:error];
     if (xml.rootXMLElement) {
         return [[GPXRoot alloc] initWithXMLElement:xml.rootXMLElement parent:nil];
     }
